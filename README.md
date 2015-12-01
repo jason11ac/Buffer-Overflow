@@ -211,7 +211,7 @@ it in gdb and the output was:
 #10 0x00007fffffffe4d1 in ?? ()
 #11 0x00007fffffffd010 in ?? ()
 #12 0x0000000000000006 in ?? ()
-13 0x00000000004082b8 in main (argc=1094795585, argv=<optimized out>) at thttpd.c:380
+#13 0x00000000004082b8 in main (argc=1094795585, argv=<optimized out>) at thttpd.c:380
 
 
 I then stepped through the read_config function using s and I eventually got to this line:
@@ -418,6 +418,7 @@ that used the remove function on the Internet:
 
 int main()
 {
+        
         int ret;
         FILE *fp;
         char filename[] = "file.txt";
