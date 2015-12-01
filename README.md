@@ -413,8 +413,6 @@ function so that I could convert it into raw code and put that
 in my exploit.txt at the right place. I found a simple function 
 that used the remove function on the Internet:
 
-- #include <stdio.h>
-- #include <string.h>
 
 int main()
 {
