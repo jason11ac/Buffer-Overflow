@@ -97,24 +97,24 @@ I then used gdb to start stepping through the function thttpd-sp.
 I first used the gdb --args src/thttpd-sp -p 13045 -D -C tester.txt command, set logging on, and then 
 let it crash. I then used bt to backtrace and it outputted this:
 
-0  0x00007ffff6db1128 in ?? () from /lib64/libgcc_s.so.1
-1  0x00007ffff6db2029 in _Unwind_Backtrace () from /lib64/libgcc_s.so.1
-2  0x00007ffff76e50a6 in backtrace () from /lib64/libc.so.6
-3  0x00007ffff7650e24 in __libc_message () from /lib64/libc.so.6
-4  0x00007ffff76e8a57 in __fortify_fail () from /lib64/libc.so.6
-5  0x00007ffff76e8a20 in __stack_chk_fail () from /lib64/libc.so.6
-6  0x0000000000405022 in read_config (filename=<optimized out>) at thttpd.c:1190
-7  0x4141414141414141 in ?? ()
-8  0x4141414141414141 in ?? ()
-9  0x4141414141414141 in ?? ()
-10 0x4141414141414141 in ?? ()
-11 0x4141414141414141 in ?? ()
-12 0x4141414141414141 in ?? ()
-13 0x4141414141414141 in ?? ()
-14 0x4141414141414141 in ?? ()
-15 0x4141414141414141 in ?? ()
-16 0x0000000000414141 in ?? ()
-17 0x0000000000000000 in ?? ()
+-0  0x00007ffff6db1128 in ?? () from /lib64/libgcc_s.so.1
+-1  0x00007ffff6db2029 in _Unwind_Backtrace () from /lib64/libgcc_s.so.1
+-2  0x00007ffff76e50a6 in backtrace () from /lib64/libc.so.6
+-3  0x00007ffff7650e24 in __libc_message () from /lib64/libc.so.6
+-4  0x00007ffff76e8a57 in __fortify_fail () from /lib64/libc.so.6
+-5  0x00007ffff76e8a20 in __stack_chk_fail () from /lib64/libc.so.6
+-6  0x0000000000405022 in read_config (filename=<optimized out>) at thttpd.c:1190
+-7  0x4141414141414141 in ?? ()
+-8  0x4141414141414141 in ?? ()
+-9  0x4141414141414141 in ?? ()
+-10 0x4141414141414141 in ?? ()
+-11 0x4141414141414141 in ?? ()
+-12 0x4141414141414141 in ?? ()
+-13 0x4141414141414141 in ?? ()
+-14 0x4141414141414141 in ?? ()
+-15 0x4141414141414141 in ?? ()
+-16 0x0000000000414141 in ?? ()
+-17 0x0000000000000000 in ?? ()
 
 The hex 0x41 corresponds to the ascii letter A, which makes sense as my tester.txt contains port = a bunch 
 of A's. So the addresses are the hex representation of all my A's in my tester.txt. 
