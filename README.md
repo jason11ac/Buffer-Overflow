@@ -97,24 +97,24 @@ I then used gdb to start stepping through the function thttpd-sp.
 I first used the gdb --args src/thttpd-sp -p 13045 -D -C tester.txt command, set logging on, and then 
 let it crash. I then used bt to backtrace and it outputted this:
 
-#0  0x00007ffff6db1128 in ?? () from /lib64/libgcc_s.so.1
-#1  0x00007ffff6db2029 in _Unwind_Backtrace () from /lib64/libgcc_s.so.1
-#2  0x00007ffff76e50a6 in backtrace () from /lib64/libc.so.6
-#3  0x00007ffff7650e24 in __libc_message () from /lib64/libc.so.6
-#4  0x00007ffff76e8a57 in __fortify_fail () from /lib64/libc.so.6
-#5  0x00007ffff76e8a20 in __stack_chk_fail () from /lib64/libc.so.6
-#6  0x0000000000405022 in read_config (filename=<optimized out>) at thttpd.c:1190
-#7  0x4141414141414141 in ?? ()
-#8  0x4141414141414141 in ?? ()
-#9  0x4141414141414141 in ?? ()
-#10 0x4141414141414141 in ?? ()
-#11 0x4141414141414141 in ?? ()
-#12 0x4141414141414141 in ?? ()
-#13 0x4141414141414141 in ?? ()
-#14 0x4141414141414141 in ?? ()
-#15 0x4141414141414141 in ?? ()
-#16 0x0000000000414141 in ?? ()
-#17 0x0000000000000000 in ?? ()
+0  0x00007ffff6db1128 in ?? () from /lib64/libgcc_s.so.1
+1  0x00007ffff6db2029 in _Unwind_Backtrace () from /lib64/libgcc_s.so.1
+2  0x00007ffff76e50a6 in backtrace () from /lib64/libc.so.6
+3  0x00007ffff7650e24 in __libc_message () from /lib64/libc.so.6
+4  0x00007ffff76e8a57 in __fortify_fail () from /lib64/libc.so.6
+5  0x00007ffff76e8a20 in __stack_chk_fail () from /lib64/libc.so.6
+6  0x0000000000405022 in read_config (filename=<optimized out>) at thttpd.c:1190
+7  0x4141414141414141 in ?? ()
+8  0x4141414141414141 in ?? ()
+9  0x4141414141414141 in ?? ()
+10 0x4141414141414141 in ?? ()
+11 0x4141414141414141 in ?? ()
+12 0x4141414141414141 in ?? ()
+13 0x4141414141414141 in ?? ()
+14 0x4141414141414141 in ?? ()
+15 0x4141414141414141 in ?? ()
+16 0x0000000000414141 in ?? ()
+17 0x0000000000000000 in ?? ()
 
 The hex 0x41 corresponds to the ascii letter A, which makes sense as my tester.txt contains port = a bunch 
 of A's. So the addresses are the hex representation of all my A's in my tester.txt. 
@@ -191,27 +191,27 @@ To start testing of thttpd-as I did the same first step as for thttpd-sp. I ran 
 it in gdb and the output was:  
 
 
-#0  0x00007ffff7073128 in ?? () from /lib64/libgcc_s.so.1
-#1  0x00007ffff7074029 in _Unwind_Backtrace () from /lib64/libgcc_s.so.1
-#2  0x000000000048a406 in __sanitizer::BufferedStackTrace::SlowUnwindStack (this=0x7fffffffbc70, pc=4563976, 
+0  0x00007ffff7073128 in ?? () from /lib64/libgcc_s.so.1
+1  0x00007ffff7074029 in _Unwind_Backtrace () from /lib64/libgcc_s.so.1
+2  0x000000000048a406 in __sanitizer::BufferedStackTrace::SlowUnwindStack (this=0x7fffffffbc70, pc=4563976, 
     max_depth=<optimized out>)
     at ../../../../gcc-5.2.0/libsanitizer/sanitizer_common/sanitizer_unwind_posix_libcdep.cc:113
-#3  0x0000000000486882 in __asan::GetStackTraceWithPcBpAndContext (fast=false, context=0x0, bp=140737488342320, 
+3  0x0000000000486882 in __asan::GetStackTraceWithPcBpAndContext (fast=false, context=0x0, bp=140737488342320, 
     pc=<optimized out>, max_depth=256, stack=<optimized out>)
     at ../../../../gcc-5.2.0/libsanitizer/asan/asan_stack.h:43
-#4  __asan_report_error (pc=<optimized out>, bp=bp@entry=140737488342320, sp=sp@entry=140737488340192, 
+4  __asan_report_error (pc=<optimized out>, bp=bp@entry=140737488342320, sp=sp@entry=140737488340192, 
     addr=addr@entry=140737488342484, is_write=is_write@entry=0, access_size=access_size@entry=229)
     at ../../../../gcc-5.2.0/libsanitizer/asan/asan_report.cc:1006
-#5  0x000000000045a423 in __interceptor_strchr (str=str@entry=0x7fffffffcd70 "port=", 'A' <repeats 195 times>..., 
+5  0x000000000045a423 in __interceptor_strchr (str=str@entry=0x7fffffffcd70 "port=", 'A' <repeats 195 times>..., 
     c=c@entry=35) at ../../../../gcc-5.2.0/libsanitizer/asan/asan_interceptors.cc:430
-#6  0x00000000004b1df1 in read_config (filename=<optimized out>) at thttpd.c:1018
-#7  0x4141414141414141 in ?? ()
-#8  0x00007f000a414141 in ?? ()
-#9  0x00007fffffffe0f0 in ?? ()
-#10 0x00007fffffffe4d1 in ?? ()
-#11 0x00007fffffffd010 in ?? ()
-#12 0x0000000000000006 in ?? ()
-#13 0x00000000004082b8 in main (argc=1094795585, argv=<optimized out>) at thttpd.c:380
+6  0x00000000004b1df1 in read_config (filename=<optimized out>) at thttpd.c:1018
+7  0x4141414141414141 in ?? ()
+8  0x00007f000a414141 in ?? ()
+9  0x00007fffffffe0f0 in ?? ()
+10 0x00007fffffffe4d1 in ?? ()
+11 0x00007fffffffd010 in ?? ()
+12 0x0000000000000006 in ?? ()
+13 0x00000000004082b8 in main (argc=1094795585, argv=<optimized out>) at thttpd.c:380
 
 
 I then stepped through the read_config function using s and I eventually got to this line:
@@ -244,18 +244,18 @@ Testing of thttpd-no
 
 I performed the same first steps as the first two. My backtrace output was:
 
-#0  0x0000000000404d6b in read_config (filename=<optimized out>) at thttpd.c:1190
-#1  0x4141414141414141 in ?? ()
-#2  0x4141414141414141 in ?? ()
-#3  0x4141414141414141 in ?? ()
-#4  0x4141414141414141 in ?? ()
-#5  0x4141414141414141 in ?? ()
-#6  0x4141414141414141 in ?? ()
-#7  0x4141414141414141 in ?? ()
-#8  0x4141414141414141 in ?? ()
-#9  0x4141414141414141 in ?? ()
-#10 0x0000000000414141 in ?? ()
-#11 0x0000000000000000 in ?? ()
+0  0x0000000000404d6b in read_config (filename=<optimized out>) at thttpd.c:1190
+1  0x4141414141414141 in ?? ()
+2  0x4141414141414141 in ?? ()
+3  0x4141414141414141 in ?? ()
+4  0x4141414141414141 in ?? ()
+5  0x4141414141414141 in ?? ()
+6  0x4141414141414141 in ?? ()
+7  0x4141414141414141 in ?? ()
+8  0x4141414141414141 in ?? ()
+9  0x4141414141414141 in ?? ()
+10 0x0000000000414141 in ?? ()
+11 0x0000000000000000 in ?? ()
 
 I then stepped through the function using s and got to the very last line:
 
@@ -413,8 +413,8 @@ function so that I could convert it into raw code and put that
 in my exploit.txt at the right place. I found a simple function 
 that used the remove function on the Internet:
 
-#include <stdio.h>
-#include <string.h>
+- #include <stdio.h>
+- #include <string.h>
 
 int main()
 {
